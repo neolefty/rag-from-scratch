@@ -3,6 +3,7 @@ name: rag-from-scratch
 services:
   jupyter:
     container_name: rag-jupyter
+    env_file: .env
     build:
         context: jupyter/
     networks:
@@ -12,10 +13,14 @@ services:
     volumes:
       - ./jupyter/notebooks:/home/jovyan/work
     # On localhost, no need to authenticate.
-    command: start-notebook.sh --NotebookApp.token=''
+    command: start-notebook.sh --IdentityProvider.token=''
 
   postgres:
     container_name: rag-postgres
+    environment:
+      POSTGRES_DB: rag
+      POSTGRES_USER: rag
+      POSTGRES_PASSWORD: rag
     build:
         context: postgres/
     networks:
