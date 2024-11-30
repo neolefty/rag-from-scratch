@@ -11,3 +11,12 @@ $ docker compose up
 ```
 
 Then open http://localhost:8888.
+
+## Helpful
+
+To install `voyageai` locally, and you are defaulting to python 3.13 which is "incompatible", you might need to run:
+
+```bash
+brew install pipx
+pipx install --python 3.12 --include-deps voyageai==0.3.1
+```
